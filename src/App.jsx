@@ -11,9 +11,9 @@ import "./App.scss";
 function App() {
   return (
     <>
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <Nav />
-      </nav>
+      </nav> */}
       <section className="content">
         <Routes>
           <Route path="/" element={<Home />} />
