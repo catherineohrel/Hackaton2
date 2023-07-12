@@ -1,20 +1,38 @@
-nav {
-    height:100%;
-    width:100%;
-    // background-color: red;
-    box-sizing: border-box;
-    padding:1rem;
 
-}
-
-.nav-logo{
-    height:100%;
-    width:fit-content;
-
-    img{
-        height:100%;
-        aspect-ratio: 197/81;
-        object-fit: contain;
+@media screen and (max-width: 845px ){
+    .navbar-content{
+        display:flex;
+        justify-content: center;
 
     }
+}
+
+@media screen and (max-width > 845px ){
+    .navbar-content {
+        display:flex;
+        justify-content: flex-start;
+
+    }
+}
+
+.navbar-content {
+    height:100%;
+    width:100%;
+    box-sizing: border-box;
+    padding:1rem;
+    max-height: 150px;
+
+    .nav-logo{
+        height:100%;
+        width:fit-content;
+        
+
+        img{
+            height:100%;
+            aspect-ratio: 197/81;
+            object-fit: contain;
+
+        }
+    }
+
 }
