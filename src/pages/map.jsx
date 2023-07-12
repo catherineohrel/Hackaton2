@@ -8,6 +8,14 @@ import { useEffect, useState } from "react";
 export default function Map() {
 	const [treasures, setTreasures] = useState([]);
 	const [ships, setShips] = useState([]);
+	const [selectedOptions, setSelectedOptions] = useState("");
+
+	//FILTERS
+	const handleOptionChange = (selectedOptions) => {
+		setSelectedOptions(selectedOptions);
+		console.log(selectedOptions);
+	};
+
 	// FETCH API
 	const getTreasures = () => {
 		axios.get("http://localhost:4242/treasures").then((response) => {
@@ -85,10 +93,10 @@ export default function Map() {
 					</Marker>
 				))}
 				<div className="menufilter-map">
-					<select name="target" id="target">
-						<option value="">Ships & treasures</option>
-						<option value="">Treasures</option>
-						<option value="">Ships</option>
+					<select name="target" id="target" onChange={handleOptionChange}>
+						<option value="all">Ships & treasures</option>
+						<option value="treasures">Treasures</option>
+						<option value="ships">Ships</option>
 					</select>
 					<select name="target" id="target">
 						<option value=""></option>
