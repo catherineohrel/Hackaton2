@@ -1,4 +1,4 @@
-import "Dialogs.scss";
+import "./Dialogs.scss";
 
 function Dialogs() {
   return <></>;

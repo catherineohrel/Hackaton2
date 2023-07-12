@@ -1,4 +1,4 @@
-import "Introduction.scss";
+import "./Introduction.scss";
 
 function Introduction() {
   return <></>;
