@@ -3,7 +3,7 @@ import imgLogo from "../../assets/images/logo/logo.png";
 
 function Nav() {
   return (
-    <div>
+    <div className="navbar-content">
       <div className="nav-logo">
         <img src={imgLogo} alt="img-logo" />
       </div>
