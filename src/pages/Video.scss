@@ -1,0 +1,58 @@
+.videoContainer {
+  height: 100%;
+  width: 100%;
+  // background-color: rgb(65, 64, 64);
+  position: relative;
+    // flex-direction: row;
+    // align-content: stretch;
+    // justify-content: center;
+    align-items: center;
+    text-align: center;
+
+
+  .skullContainer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 11;
+
+    .skullImg {
+      width: 100%;
+    }
+  }
+
+  
+  .youtubeContent {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+
+    .videoPirate{
+      width: 50%;
+      border: none;
+    }
+  }
+
+}
+
+.fade-out{
+  display:flex;
+  animation: fadeOut 3s forwards;
+  // display: none;
+}
+
+.hide{
+  display:none;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
