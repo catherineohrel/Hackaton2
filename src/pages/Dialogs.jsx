@@ -9,34 +9,81 @@ function Dialogs() {
     "Hey my friend ! I don’k know if i’m drunk or not, but i met people from turfu... !",
     "I know... but we are talking in a box and you answer me...!",
     "On the desktop they have placed an animated table, if you press it apparently you have access to hidden treasures and the position of our rivals! ",
-    "Ok yes, they have at home  what they call citrate de betaine and doliprane... even the names are weird !! ",
     "They says it’s sattelittes or a shit like that i don’t care, but try it !",
+    "Apparently they have at home something called citrate de betaine, doliprane... even the names are weird !! ",
     "Ok big boy, so you wanna click in this fucking paint ?",
   ];
 
   const speechGuest = [
     "The aperitif was hard yesterday but still...",
     "It’s right... Oh fuck my head is so heavy.. ",
-    "What the hell, yes i’m front of. I understand nothing... It’s like you speak to me of kolbak ! Can you ask them if they have a hangover potion ?",
+    "No wayyyy",
+    "What the hell, satellites my ass. I’m front of. I understand nothing... It’s like i'm behin a kolbak... Can you ask them if they have a hangover potion ?",
     "Please bring me back some, i have to try",
     "yeah yeah...",
   ];
 
   const [tabSpeechJack, setTabSpeechJack] = useState([]);
   const [tabSpeechGuest, setTabSpeechGuest] = useState([]);
+  const [indexMessageGuest, setIndexMessageGuest] = useState(0);
+  const [indexMessageJack, setIndexMessageJack] = useState(0);
+  const [start, setStart] = useState(false);
+  const [toggle, setToggle] = useState(false);
+  const [displayJack, setDisplayJack] = useState(true);
+  const [displayGuest, setDisplayGuest] = useState(false);
 
   useEffect(() => {
     setTabSpeechJack(speechJack);
     setTabSpeechGuest(speechGuest);
+
+    const timer = setTimeout(() => {
+      setStart(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, []);
 
+  const handleMessage = () => {
+    console.log(toggle);
+    console.log("start : " + start);
+
+    if (start) {
+      if (toggle) {
+        setDisplayJack(true);
+        setDisplayGuest(false);
+        setMessages(setIndexMessageJack, tabSpeechJack);
+        console.log("index jack: " + indexMessageJack);
+      } else {
+        setDisplayGuest(true);
+        setDisplayJack(false);
+        setMessages(setIndexMessageGuest, tabSpeechGuest);
+        console.log("index guest: " + indexMessageGuest);
+      }
+    }
+  };
+  const setMessages = (setMessage, tab) => {
+    setMessage((index) => {
+      if (index + 2 > tab.length - 1) {
+        console.log(index);
+        setStart(false);
+        return 0;
+      } else {
+        setToggle(!toggle);
+        return index + 1;
+      }
+    });
+  };
   return (
     <>
       <div className="dialogsGlobal">
         <img src={pirate} alt="pirate devant un ordinateur" />
         <div className="dialogs">
           <div className="jackSparrowSay">
-            <DialogBubble text={tabSpeechJack} />
+            {displayJack ? (
+              <DialogBubble text={tabSpeechJack[indexMessageJack]} />
+            ) : (
+              ""
+            )}
           </div>
           <div className="center">
             <div className="clickScreen">
@@ -46,7 +93,14 @@ function Dialogs() {
             <div className="headOfPirate">bloob</div>
           </div>
           <div className="dialogScreen">
-            <button>Next !!</button>
+            <div className="GuestSay">
+              {displayGuest ? (
+                <DialogBubble text={tabSpeechGuest[indexMessageGuest]} />
+              ) : (
+                ""
+              )}
+            </div>
+            <button onClick={handleMessage}>Next !!</button>
           </div>
         </div>
       </div>

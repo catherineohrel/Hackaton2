@@ -1,4 +1,4 @@
-// import "./dialogBubble.scss";
+import "./dialogBubble.scss";
 
 function DialogBubble({ text }) {
   return (
