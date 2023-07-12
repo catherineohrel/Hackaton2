@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import pirate from "../assets/images/img/pirate4.png"
+import pirate from "../assets/images/pirate4.png"
 // import JS_1 from "../assets/images/JS_1.png"
 // import JS_2 from "../assets/images/JS_2.png"
 // import JS_3 from "../assets/images/JS_3.png"
