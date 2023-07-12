@@ -6,8 +6,8 @@
     // flex-direction: row;
     // align-content: stretch;
     // justify-content: center;
-    align-items: center;
-    text-align: center;
+  align-items: center;
+  text-align: center;
 
 
   .skullContainer {
@@ -22,12 +22,12 @@
   }
 
   
-  .youtubeContent {
+  .videoIntro {
     position: absolute;
     width: 100%;
     z-index: 10;
 
-    .videoPirate{
+    .pirateVid{
       width: 50%;
       border: none;
     }
@@ -37,7 +37,7 @@
 
 .fade-out{
   display:flex;
-  animation: fadeOut 3s forwards;
+  animation: fadeOut 8s forwards;
   // display: none;
 }
 
