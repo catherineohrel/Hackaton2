@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Dialogs.scss";
 import DialogBubble from "../components/General/dialogBubble";
-import pirate from "../assets/images/img/pirate4.png";
+import pirate from "../assets/images/pirate4.png";
 // import JS_1 from "../assets/images/JS_1.png";
 
 function Dialogs() {
