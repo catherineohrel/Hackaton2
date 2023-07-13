@@ -89,8 +89,8 @@ function Home() {
       } else {
         setAffichFin(true);
         const timeoutId = setTimeout(() => {
-          nav("./intro");
-        }, 2000);
+          // nav("./video");
+        }, 1200);
 
         return () => {
           clearTimeout(timeoutId);
@@ -135,17 +135,26 @@ function Home() {
           </p>
         </div>
         <div className="text-content">
-          <span className="destination"> DESTINATION : PORT ROYAL </span>
+          <div className="dest-text">
+            <span className="destination"> DESTINATION : </span>
+            <span className="port">PORT ROYAL</span>
+          </div>
           <div className="date">
-            <span className="date-title">DATE ARRIVAL : 17-01-1756</span>
+            <div className="date-text">
+              <span className="date-title">DATE ARRIVAL : </span>
+              <span className="dt">17-01-1756</span>
+            </div>
+
             <div className="date-comp-container">
               <Decompte date={date} />
             </div>
           </div>
+
           <div className="home-button">
             <button
               type="button"
               id="btn-start"
+              className="start-button"
               onMouseDown={handleMove}
               onMouseUp={handleRelease}
             >
