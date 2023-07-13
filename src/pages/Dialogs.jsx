@@ -25,7 +25,7 @@ function Dialogs() {
 
   const [tabSpeechJack, setTabSpeechJack] = useState([]);
   const [tabSpeechGuest, setTabSpeechGuest] = useState([]);
-  const [indexMessageGuest, setIndexMessageGuest] = useState(0);
+  const [indexMessageGuest, setIndexMessageGuest] = useState(-1);
   const [indexMessageJack, setIndexMessageJack] = useState(0);
   const [start, setStart] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -38,41 +38,52 @@ function Dialogs() {
 
     const timer = setTimeout(() => {
       setStart(true);
-    }, 1000);
+    }, 200);
 
     return () => clearTimeout(timer);
   }, []);
 
-  const handleMessage = () => {
-    console.log(toggle);
-    console.log("start : " + start);
-
-    if (start) {
-      if (toggle) {
-        setDisplayJack(true);
-        setDisplayGuest(false);
-        setMessages(setIndexMessageJack, tabSpeechJack);
-        console.log("index jack: " + indexMessageJack);
-      } else {
-        setDisplayGuest(true);
-        setDisplayJack(false);
-        setMessages(setIndexMessageGuest, tabSpeechGuest);
-        console.log("index guest: " + indexMessageGuest);
-      }
-    }
-  };
-  const setMessages = (setMessage, tab) => {
-    setMessage((index) => {
-      if (index + 2 > tab.length - 1) {
-        console.log(index);
-        setStart(false);
+  const setMessagesJack = () => {
+    setIndexMessageJack((index) => {
+      if (index + 1 >= tabSpeechJack.length - 1) {
         return 0;
       } else {
-        setToggle(!toggle);
         return index + 1;
       }
     });
   };
+
+  const setMessagesGuest = () => {
+    setIndexMessageGuest((index) => {
+      if (index + 1 > tabSpeechGuest.length - 1) {
+        setStart(false);
+        return index;
+      } else {
+        console.log("tab length: " + tabSpeechGuest.length);
+        console.log(index + 1);
+        return index + 1;
+      }
+    });
+  };
+
+  const handleMessage = () => {
+    console.log(toggle);
+    console.log("start : " + start);
+    setToggle(!toggle);
+
+    if (start) {
+      if (toggle && indexMessageGuest !== tabSpeechGuest.length - 1) {
+        setDisplayJack(true);
+        setDisplayGuest(false);
+        setMessagesJack();
+      } else {
+        setDisplayGuest(true);
+        setDisplayJack(false);
+        setMessagesGuest();
+      }
+    }
+  };
+
   return (
     <>
       <div className="dialogsGlobal">

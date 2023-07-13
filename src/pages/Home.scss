@@ -160,13 +160,14 @@
     bottom:0;
     width:0;
     height:0;
+    z-index:2;
     background-color: black;
    
 }
 
      .active{
-        animation : zoomin 1s ease-out forwards;
-        border-radius :50%;
+        animation : zoomin 0.5s ease-out forwards;
+        
 
     }
 
@@ -267,13 +268,15 @@
         height : 0;
         width: 0;
         opacity:0.1;
+        border-radius :50%;
     }
     to {
-        height:100vh;
-        width:100vw;
+        height:100%;
+        width:100%;
         transform: translateX(-50%);
-        transform: translateY(10%);
-        opacity:1
+        transform: translateY(0%);
+        opacity:1;
+        border-radius : 0%;
     }
 }
 

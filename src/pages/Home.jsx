@@ -126,8 +126,8 @@ function Home() {
 
   return (
     <>
+      {affichFin && <div className="circle active"></div>}
       <section className="home-content">
-        {affichFin && <div className="circle active"></div>}
         <div className="container-glitch">
           <p className="glitch">
             <span aria-hidden="true">ARE YOU READY ?</span>
@@ -178,6 +178,7 @@ const CarBack = styled.div`
   height: 100%;
   display: flex;
   flex-direction: row;
+  z-index: 1;
   left: ${(props) => props.posX}px;
 
   @media screen and (max-width: 845px) {
