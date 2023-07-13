@@ -7,19 +7,24 @@ import { useEffect, useState } from "react";
 
 export default function Map() {
 	const [treasures, setTreasures] = useState([]);
-
+	const [ships, setShips] = useState([]);
 	const [selectedOptions, setSelectedOptions] = useState("all");
 
 	// FETCH API
 	const getTreasures = () => {
 		axios.get("http://localhost:4242/treasures").then((response) => {
-			const treasuresData = response.data;
-			setTreasures(treasuresData);
+			const data = response.data;
+			setTreasures(data.filter((item) => item.cat === "treasure"));
+			setShips(data.filter((item) => item.cat === "ship"));
 		});
 	};
 
 	useEffect(() => {
 		getTreasures();
+		updateShipPositions();
+		const interval = setInterval(updateShipPositions, 1000);
+
+		return () => clearInterval(interval);
 	}, []);
 
 	//FILTERS
@@ -38,6 +43,33 @@ export default function Map() {
 
 	const handleOptionChange = (selectedOption) => {
 		setSelectedOptions(selectedOption);
+	};
+
+	//DEPLACEMENT MARKER BATEAUX
+	const updateShipPositions = () => {
+		setShips((prevShips) => {
+			return prevShips.map((ship) => {
+				const { coord, speed, heading } = ship;
+				const [lat, lng] = coord;
+
+				// Calculer le déplacement en fonction de la vitesse et de la direction
+				const deltaTime = 5000; // Intervalle de temps en millisecondes
+				const distance = speed * deltaTime * 10;
+				const latDelta =
+					(distance / 111000) * Math.cos((heading * Math.PI) / 180);
+				const lngDelta =
+					(distance / 111000) * Math.sin((heading * Math.PI) / 180);
+
+				// Mettre à jour les coordonnées du bateau
+				const newLat = lat + latDelta;
+				const newLng = lng + lngDelta;
+
+				return {
+					...ship,
+					coord: [newLat, newLng],
+				};
+			});
+		});
 	};
 	//CUSTOM LOGO
 
@@ -67,12 +99,8 @@ export default function Map() {
 				/>
 
 				{filteredTreasures.map((treasure) => (
-					<Marker
-						position={treasure.coord}
-						icon={treasure.cat === "treasure" ? customIcon : customIcon2}
-						key={treasure.id}
-					>
-						{/* <Popup className="popup-container-treasure">
+					<Marker position={treasure.coord} icon={customIcon} key={treasure.id}>
+						<Popup className="popup-container-treasure">
 							<img
 								src="src/assets/images/treasure2.png"
 								alt="treasure"
@@ -86,39 +114,24 @@ export default function Map() {
 								<li>{treasure.silvercoins} silver coins</li>
 							</ul>
 							<br />
-						</Popup> */}
-						<Popup className="popup-container-treasure">
-							{treasure.cat === "treasure" ? (
-								<>
-									<img
-										src="src/assets/images/treasure2.png"
-										alt="treasure"
-										className="img-popup"
-									/>
-									<br />
-									Name: {treasure.name} <br />
-									<ul>
-										<li>{treasure.preciousstone}</li>
-										<li>{treasure.goldcoins} gold coins</li>
-										<li>{treasure.silvercoins} silver coins</li>
-									</ul>
-									<br />
-								</>
-							) : (
-								<>
-									<img src={treasure.url} alt="ship" className="img-popup" />
-									<br />
-									Name: {treasure.name} <br />
-									Nation: {treasure.nation} <br />
-									Treasure: {treasure.cargovalue} or <br />
-									Crew: {treasure.members} members <br />
-									Canons : {treasure.canons}
-									<br />
-								</>
-							)}
 						</Popup>
 					</Marker>
 				))}
+				{selectedOptions !== "treasures" &&
+					ships.map((ship) => (
+						<Marker position={ship.coord} icon={customIcon2} key={ship.id}>
+							<Popup>
+								<img src={ship.url} alt="ship" className="img-popup" />
+								<br />
+								Name: {ship.name} <br />
+								Nation: {ship.nation} <br />
+								Treasure: {ship.cargovalue} or <br />
+								Crew: {ship.members} members <br />
+								Canons : {ship.canons} pieces
+								<br />
+							</Popup>
+						</Marker>
+					))}
 
 				<div className="menufilter-map">
 					<select
@@ -126,14 +139,11 @@ export default function Map() {
 						id="target"
 						onChange={(event) => handleOptionChange(event.target.value)}
 					>
-						<option value="all">Ships & treasures</option>
+						<option value="all" className="title-filter">
+							Ships and Treasures
+						</option>
 						<option value="treasures">Treasures</option>
 						<option value="ships">Ships</option>
-					</select>
-					<select name="target" id="target">
-						<option value=""></option>
-						<option value="">Treasures</option>
-						<option value="">Ships</option>
 					</select>
 				</div>
 			</MapContainer>

@@ -1,52 +1,99 @@
-.videoContainer {
+.videoPage {
   height: 100%;
   width: 100%;
-  position: relative;
-  align-items: center;
-  text-align: center;
 
-  .skullContainer {
-    position: absolute;
-    height: 100%;
+
+  .videoContainer {
+    height: 80%;
     width: 100%;
-    z-index: 11;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
 
-    .skullImg {
+    .skullContainer {
+      position: absolute;
+      height: 100%;
       width: 100%;
+      z-index: 11;
+      align-items: center;
+      justify-content: center;
+
+      .skullImg {
+        height: max-content;
+        width: auto;
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    .videoIntro {
+      position: absolute;
+      width: 100%;
+      z-index: 10;
+      margin-top: 50px;
+
+      .pirateVid {
+        height: auto;
+        width: 60%;
+        border: none;
+        animation: fadeIn 2s;
+
+      }
     }
   }
 
-  .videoIntro {
-    position: absolute;
+  .fade-out{
+    display:flex;
+    animation: fadeOut 4s forwards;
+  }
+
+  .hide{
+    display:none;
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .nextBttn {
+    height: 20%;
     width: 100%;
+    display: flex;
+    justify-content: center;
     z-index: 10;
-    margin-top: 240px;
 
-    .pirateVid {
-      width: 50%;
+    .skullBttn {
+      height: 100%;
+      width: 4%;
+      background-color: transparent;
       border: none;
+      display: flex;
+      animation: fadeIn 20s;
+
+      .skullBttnImg {
+        height: 100px;
+        width: auto;
+        filter: brightness(0) invert(1);
+        opacity: 0.5;
+        cursor: pointer;
+  
+  
+      }
     }
   }
 }
-
-.fade-out{
-  display:flex;
-  animation: fadeOut 8s forwards;
-  // display: none;
-}
-
-.hide{
-  display:none;
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-
 

@@ -11,20 +11,20 @@ import JS_4 from "../assets/images/JS_5.png";
 
 function Dialogs() {
   const speechJack = [
-    "Hey my friend ! I don’k know if i’m drunk or not, but i met people from turfu... !",
-    "I know... but we are talking in a box and you answer me...!",
-    "On the desktop they have placed an animated table, if you press it apparently you have access to hidden treasures and the position of our rivals! ",
-    "They says it’s sattelittes or a shit like that i don’t care, but try it !",
-    "Apparently they have at home something called citrate de betaine, doliprane... even the names are weird !! ",
-    "Ok big boy, so you wanna click in this fucking paint ?",
+    "Ahoy mate ! I don’t know if I’m drunk or not, but I met some people from the turfu... !",
+    "I know... but we are talking in a box and you're answering me...!",
+    "On the square thing they have placed an animated table, if you press it apparently you have access to hidden treasures and the position of our rivals! ",
+    "They say it’s sattelites or some shit like that I don’t care, but try it !",
+    "Apparently they have something called citrate de betaine, doliprane... even the names are weird !! ",
+    "Ok big boy, so you wanna click in this fucking painting ?",
   ];
 
   const speechGuest = [
     "The aperitif was hard yesterday but still...",
-    "It’s right... Oh fuck my head is so heavy.. ",
+    "Oh fuck... my head is so heavy.. ",
     "No wayyyy",
-    "What the hell, satellites my ass. I’m front of. I understand nothing... It’s like i'm behin a kolbak... Can you ask them if they have a hangover potion ?",
-    "Please bring me back some, i have to try",
+    "What the hell, satellites my ass. I’m in front of... I don't understand... It’s like i'm behind a kolbak... Can you ask them if they have a hangover potion so I don't puke my guts out ?",
+    "Please bring me some back, I have to try it",
     "yeah yeah...",
   ];
 
