@@ -15,6 +15,36 @@
   }
 }
 
+
+.activeCircle{
+  // animation : zoomin ease-in 4s;
+  position: absolute;
+  width:100%;
+  height: 100%; 
+  z-index:10;
+
+  // background-color: black;
+  background-color: black;
+  animation : opacitFunc 1s ease-in; 
+}
+
+@keyframes opacitFunc {
+  from {
+    opacity: 1;
+  }
+
+  to{
+    opacity:0;
+  }
+}
+
+.hideVid{
+  display:none;
+}
+
+
+/* ------------------------------ */
+
 .test{
   position:absolute;
   height: 200px;
@@ -28,8 +58,6 @@
     flex-direction: column;
     position: relative;
     justify-content: center;
- 
-
 
 .dialogs {
   display: flex;
@@ -49,81 +77,76 @@
     // // aspect-ratio : 14 / 21;
     // // aspect-ratio: 17.5 / 21;
 
-    .bg-dialog {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top:0;
-      left:0;
-    }
+  .bg-dialog {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+  }
       
-    .jackSparrowSay {
-      display: flex;
+  .jackSparrowSay {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 22%;
+    position: relative;
+    background-image: linear-gradient(to bottom,rgba(206, 174, 128, 0.70) ,rgba(255, 255, 255, 0) );
+    background: rgba(255, 255, 255, 0.2);
+    // border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    // border: 1px solid rgba(255, 255, 255, 0.3);
+    // aspect-ratio : 179 / 153;
+      
+    .wrap-img-jack{
+      height:100%;
+      width: 40%;
+      display:flex;
       justify-content: flex-end;
-      align-items: center;
-      width: 100%;
-      height: 22%;
-      position: relative;
-      background-image: linear-gradient(to bottom,rgba(206, 174, 128, 0.70) ,rgba(255, 255, 255, 0) );
-      background: rgba(255, 255, 255, 0.2);
-      // border-radius: 16px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      // border: 1px solid rgba(255, 255, 255, 0.3);
-      // aspect-ratio : 179 / 153;
-      
-      .wrap-img-jack{
-        height:100%;
-        width: 40%;
-        display:flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-
+      align-items: flex-end;
         
-        img {
-          display:flex;;
-          width: auto;
-          height: 80%;
-          // bottom: -15px;
-          background-color: linear-gradient(to bottom,rgba(206, 174, 128, 0.70) ,rgba(255, 255, 255, 0) );
-          /* From https://css.glass */
-
-        }
-    
-    }
-    }
-
-    .center {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 35%;
-
-      .clickScreen {
-        display: flex;
-        align-items: center;
-        width: 40%;
+      img {
+        display:flex;;
+        width: auto;
         height: 80%;
-        position: relative;
-        
+        // bottom: -15px;
+        background-color: linear-gradient(to bottom,rgba(206, 174, 128, 0.70) ,rgba(255, 255, 255, 0) );
+        /* From https://css.glass */
+      }    
+    }
+  }
 
-        .btn-ecran {
-          width: 100%;
-          height: inherit;
-          cursor: pointer;
-          border: none;
-          background: transparent;
-          // font-size:2.5rem;
-          transform: rotate(-18deg);
-          color:#a53d38;
-          animation : zoomin 1s ease-in-out infinite;
+  .center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 35%;
 
-        }
+    .clickScreen {
+      display: flex;
+      align-items: center;
+      width: 40%;
+      height: 80%;
+      position: relative;            
+
+      .btn-ecran {
+        width: 100%;
+        height: inherit;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        // font-size:2.5rem;
+        transform: rotate(-18deg);
+        color:#a53d38;
+        animation : zoomin 1s ease-in-out infinite;
       }
+    }
 
       .headOfPirate {
         display: flex;
@@ -141,7 +164,7 @@
       align-items: flex-end;
       width: 100%;
       height: 45%;
-      position: relative;   
+      position: relative;  
       
       .GuestSay{
         width:88%;
@@ -155,7 +178,46 @@
         margin: 0 50px 50px 0;
         border: none;
         border-radius: 10px;
+         
+        // border:1px solid grey;
+        border:1px solid #C4A57C;
+        position:relative;
+        overflow:hidden;
+        cursor:pointer;
       }
+
+      button:hover {
+        transform: scale(1.5);
+      }
+
+      
+      button:before,
+      button:after{
+        content:'';
+        display:block;
+        position:absolute;
+        bottom:0;
+        top:0;
+        left:0;
+        right:0;
+        z-index:1;
+        background-color: #a53d38;
+        transition :  0.35s ease-in-out;
+        transition-property : top, bottom, left,right, border-width;
+      }
+      
+      button:before{
+        bottom:100%; 
+      }
+      button:hover:before{
+        bottom:49%;
+      }
+      button:after{
+        top:100%;
+      }
+      button:hover:after{
+        top:49%;
+      }      
     }
   }  
 }
