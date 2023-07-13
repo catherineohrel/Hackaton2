@@ -141,7 +141,7 @@ function Home() {
           </div>
           <div className="date">
             <div className="date-text">
-              <span className="date-title">DATE ARRIVAL : </span>
+              <span className="date-title">ARRIVAL DATE : </span>
               <span className="dt">17-01-1756</span>
             </div>
 
