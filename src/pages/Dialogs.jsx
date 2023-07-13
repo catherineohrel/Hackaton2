@@ -103,6 +103,7 @@ function Dialogs() {
       }
     }
   };
+
   return (
     <>
       <div className={` ${afficheFin ? "activeCircle" : "hideVid"}`}></div>

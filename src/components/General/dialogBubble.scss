@@ -17,6 +17,10 @@
   color: #fff;
   background: #a53d38;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  // animation : bulanim 2s ease-out ;
+  // transform: translateY(0) translateX(100px);
+  transform: translateY(0) translateX(20px);
+  animation: bulanim 0.4s ease-in;
  
   /* (A3) DIMENSIONS + POSITION */
   position: relative;
@@ -25,6 +29,33 @@
 //   margin: 50px auto;
   max-width: 320px;
   display:flex;
+}
+
+@keyframes bulanim {
+  // 0% {
+  //   transform: translateY(-20px) translateX(5px);
+  // }
+  // 33% {
+  //   transform: translateY(0) translateX(10px);
+  // }
+  // 66% {
+  //   transform: translateY(-10px) translateX(15px);
+  // }  
+  // 100% {
+  //   transform: translateY(0) translateX(20px);
+  // }
+  0% {
+    transform: translate(5px, -20px);
+  }
+  33% {
+    transform: translate(10px, 0);
+  }
+  66% {
+    transform: translate(15px, -10px);
+  }  
+  100% {
+    transform: translate(20px, 0);
+  }
 }
 
 /* (B) ADD SPEECH "CALLOUT TAIL" */
@@ -121,6 +152,7 @@
   font-weight: 600;
   margin-top: 30px;
 }
+
 #code-boxx a {
   display: inline-block;
   padding: 5px;
