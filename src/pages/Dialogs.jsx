@@ -52,7 +52,7 @@ function Dialogs() {
 
   const setMessagesJack = () => {
     setIndexMessageJack((index) => {
-      if (index + 1 >= tabSpeechJack.length - 1) {
+      if (index + 1 > tabSpeechJack.length - 1) {
         return 0;
       } else {
         return index + 1;
