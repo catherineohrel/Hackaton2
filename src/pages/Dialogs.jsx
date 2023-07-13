@@ -94,6 +94,7 @@ function Dialogs() {
       }
     }
   };
+
   return (
     <div className="dialogsGlobal">
       <img
@@ -126,7 +127,7 @@ function Dialogs() {
               </button>
             )}
           </div>
-          <div className="headOfPirate">bloob</div>
+          <div className="headOfPirate"></div>
         </div>
 
         <div className="dialogScreen">
