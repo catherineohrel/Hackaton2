@@ -11,23 +11,23 @@ import Map from "./pages/map";
 import "./App.scss";
 
 function App() {
-  return (
-    <>
-      <nav className="wrap-navbar">
-        <Nav />
-      </nav>
-      <div className="blur"></div>
-      <section className="wrap-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/intro" element={<Introduction />} />
-          <Route path="/dialogs" element={<Dialogs />} />
-          <Route path="/video" element={<Video />} />
-          <Route path="/map" element={<Map />} />
-        </Routes>
-      </section>
-    </>
-  );
+	return (
+		<>
+			<nav className="wrap-navbar">
+				<Nav />
+			</nav>
+			<div className="blur"></div>
+			<section className="wrap-content">
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/intro" element={<Introduction />} />
+					<Route path="/dialogs" element={<Dialogs />} />
+					<Route path="/video" element={<Video />} />
+					<Route path="/map" element={<Map />} />
+				</Routes>
+			</section>
+		</>
+	);
 }
 
 export default App;
