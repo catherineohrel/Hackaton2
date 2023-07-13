@@ -89,8 +89,8 @@ function Home() {
       } else {
         setAffichFin(true);
         const timeoutId = setTimeout(() => {
-          nav("./video");
-        }, 1000);
+          // nav("./video");
+        }, 1200);
 
         return () => {
           clearTimeout(timeoutId);

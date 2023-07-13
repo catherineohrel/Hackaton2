@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Dialogs.scss";
 import DialogBubble from "../components/General/dialogBubble";
 import pirate from "../assets/images/pirate4.png";
-// import JS_1 from "../assets/images/JS_1.png";
+import JS_0 from "../assets/images/JS_1.png";
+import JS_1 from "../assets/images/JS_2.png";
+import JS_2 from "../assets/images/JS_3.png";
+import JS_3 from "../assets/images/JS_4.png";
+import JS_4 from "../assets/images/JS_5.png";
 
 function Dialogs() {
   const speechJack = [
@@ -31,6 +36,8 @@ function Dialogs() {
   const [toggle, setToggle] = useState(false);
   const [displayJack, setDisplayJack] = useState(true);
   const [displayGuest, setDisplayGuest] = useState(false);
+
+  const nav = useNavigate();
 
   useEffect(() => {
     setTabSpeechJack(speechJack);
@@ -66,6 +73,10 @@ function Dialogs() {
     });
   };
 
+  const handleNav = () => {
+    nav("../map");
+  };
+
   const handleMessage = () => {
     console.log(toggle);
     console.log("start : " + start);
@@ -83,40 +94,51 @@ function Dialogs() {
       }
     }
   };
-
   return (
-    <>
-      <div className="dialogsGlobal">
-        <img src={pirate} alt="pirate devant un ordinateur" />
-        <div className="dialogs">
-          <div className="jackSparrowSay">
-            {displayJack ? (
-              <DialogBubble text={tabSpeechJack[indexMessageJack]} />
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="center">
-            <div className="clickScreen">
-              <input type="button" />
-              click me bitch !
-            </div>
-            <div className="headOfPirate">bloob</div>
-          </div>
-          <div className="dialogScreen">
-            <div className="GuestSay">
-              {displayGuest ? (
-                <DialogBubble text={tabSpeechGuest[indexMessageGuest]} />
-              ) : (
-                ""
-              )}
-            </div>
-            <button onClick={handleMessage}>Next !!</button>
+    <div className="dialogsGlobal">
+      <img
+        className="bg-dialog"
+        src={pirate}
+        alt="pirate devant un ordinateur"
+      />
+      <div className="dialogs">
+        <div className="jackSparrowSay">
+          {displayJack && (
+            <DialogBubble text={tabSpeechJack[indexMessageJack]} />
+          )}
+          <div className="wrap-img-jack">
+            <img
+              src={`src/assets/images/JS_${indexMessageJack}.png`}
+              alt="Jack Sparrow say to us...:'("
+            />
           </div>
         </div>
+
+        <div className="center">
+          <div className="clickScreen">
+            {!start && (
+              <button
+                onClick={handleNav}
+                className="btn-ecran zoomin"
+                type="button"
+              >
+                click me bitch !
+              </button>
+            )}
+          </div>
+          <div className="headOfPirate">bloob</div>
+        </div>
+
+        <div className="dialogScreen">
+          <div className="GuestSay">
+            {displayGuest && (
+              <DialogBubble text={tabSpeechGuest[indexMessageGuest]} />
+            )}
+          </div>
+          <button onClick={handleMessage}>Next !!</button>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
-
 export default Dialogs;
