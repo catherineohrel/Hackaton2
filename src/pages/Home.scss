@@ -9,12 +9,22 @@
     }
 
     #btn-start{
-        height: 70px;
+        height: 60px;
+        font-size: 0.9rem;
+    }
+
+    .text-content{
+      font-size:0.9rem;
+      width:60%;
+    }
+
+    .dest-text{
+       height:10%;
     }
 }
 
 @media screen and (width > 845px ){
-    .container-glitchle{
+    .container-glitch{
         font-size: 4.5rem;
     }
     .wrap-objects{
@@ -24,6 +34,15 @@
     #btn-start{
         height: 94px;
     }
+
+    .text-content{
+      font-size:1.2rem;
+      width:40%;
+    }
+
+    .dest-text{
+      height:20%;
+   }
 }
 
 .home-content {
@@ -38,23 +57,45 @@
 
     .text-content{
         height:80%;
-        width:40%;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        // width:40%;
         max-height:500px;
         // background-color: red;
   
 
-        .destination{
-            height:25%;
+        .dest-text{
+            // height:10%;
             width:100%;
             display:flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;  
-            animation: 
-            typing 3.5s steps(40, end),
-            blink-caret .75s step-end infinite;    
+            // font-size: 1.2rem;  
+               
             // background-color: grey; 
+        
+      
+        .destination{
+          width:50%;
+        display:flex;
+      justify-content: flex-end;}
+
+        .port{
+          width:50%;
+          display:flex;
+          justify-content: flex-start;
+          margin-left:10px;
+          animation: typing 2s steps(22);
+          white-space: nowrap;
+          overflow: hidden;
+          // border-right: 3px solid;
+          font-family: monospace;
+          // font-size: 2em; 
         }
+      }
+
+      // blink .5s step-end  alternate;
 
         .date{
             height: 33%;
@@ -64,16 +105,32 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem; 
+            // font-size: 1.2rem; 
+
+            .date-text{
+              height:100%;
+              width: 100%;
+              display:flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
 
             .date-title{
-                height: 40%;
-                width:100%;
+                height: 50%;
+                width:50%;
                 // background-color: green;
                 display:flex;
-                justify-content: center;
+                justify-content: flex-end;
                 align-items: center;
             }
+
+            .dt{
+              width:50%;
+              margin-left:10px;
+
+            }
+
+          }
 
             .date-comp-container{
                 height: 60%;
@@ -85,6 +142,7 @@
                 
 
             }
+
         }
 
         .home-button{
@@ -98,10 +156,10 @@
             #btn-start{
                 width: 223px;
                 border-radius: 20px;
-                border:none;
+                // border:transparent;
                 background: linear-gradient(180deg, #FE3E03 0%, rgba(254, 62, 3, 0.00) 100%);
                 color:white;
-                font-size:1rem;
+                // font-size:1rem;
                 cursor:pointer;
             }
         }
@@ -149,9 +207,10 @@
 
 }
 
-#btn-start:hover{
-    background-color: white;
-    color:black;
+.start-button:hover{
+  // background-color: white;
+  border:4px solid white;
+  // color:black;
 }
 
 .circle{
@@ -167,8 +226,6 @@
 
      .active{
         animation : zoomin 0.5s ease-out forwards;
-        
-
     }
 
 
@@ -191,13 +248,15 @@
   }
   
   .glitch {
-    font-size: 5rem;
+    // font-size: 5rem;
     font-weight: bold;
     text-transform: uppercase;
     position: relative;
     text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
       0.025em 0.04em 0 #fffc00;
     animation: glitch 725ms infinite;
+ 
+  
   }
   
   .glitch span {
@@ -209,7 +268,7 @@
   .glitch span:first-child {
     animation: glitch 500ms infinite;
     clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-    transform: translate(-0.04em, -0.03em);
+    transform: translate(-1%, -1%);
     opacity: 0.75;
   }
   
@@ -253,15 +312,18 @@
   
 
   @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+    from {
+      width: 0
+      
+    }
+    
   }
-
-
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange; }
-  }
+      
+  // @keyframes blink {
+  //   50% {
+  //     border-color: transparent
+  //   }
+  // }
 
 @keyframes zoomin{
     from {
