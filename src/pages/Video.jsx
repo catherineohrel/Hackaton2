@@ -7,58 +7,71 @@ import pirateVideo from "../assets/videos/PiratesOfTheCaribbeanCrowScene Short.m
 import "./Video.scss";
 
 function Video() {
-const [displaySkull, setDisplaySkull] = useState(true);
-const [hideAll, setHideAll] = useState(false);
-const [videoPlay, setVideoPlay] = useState(false);
-const videoRef = useRef(null);
-const navigate = useNavigate();
+  const [displaySkull, setDisplaySkull] = useState(true);
+  const [hideAll, setHideAll] = useState(false);
+  const [videoPlay, setVideoPlay] = useState(false);
 
-useEffect(() => {
+  const videoRef = useRef(null);
+  const navigate = useNavigate();
 
-  const timer = setTimeout(() => {
-    setDisplaySkull(false);
-    setHideAll(true);
-    setVideoPlay(true);
-  }, 4000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDisplaySkull(false);
+      setHideAll(true);
+      setVideoPlay(true);
+    }, 4000);
 
-  return ()=> {
-        clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
     };
-}, []);
+  }, []);
 
-useEffect(() => {
-  if (videoPlay) {
-    videoRef.current.play();
-  }
-}, [videoPlay]);
+  useEffect(() => {
+    if (videoPlay) {
+      videoRef.current.play();
+    }
+  }, [videoPlay]);
 
-const handleClick = () => {
-  navigate("../dialogs");
-}
+  const handleClick = () => {
+    navigate("../dialogs");
+  };
 
   return (
-        <>
-        <div className="videoPage">
-          <div className="videoContainer">
-            <div className={`skullContainer ${displaySkull ? "fade-out" : hideAll ? "hide" : "" }`}>
-              <img className="skullImg" src={skullImg} alt="skull" />
-
-              </div>
-              <div className="videoIntro">
-              {videoPlay && (
-                <video className="pirateVid" ref={videoRef} src={pirateVideo} controls muted={true} />
-              )}
-              </div>
+    <>
+      <div className="videoPage">
+        <div className="videoContainer">
+          <div
+            className={`skullContainer ${
+              displaySkull ? "fade-out" : hideAll ? "hide" : ""
+            }`}
+          >
+            <img className="skullImg" src={skullImg} alt="skull" />
           </div>
-          <div className="nextBttn">
+          <div className="videoIntro">
             {videoPlay && (
-            <button type="button" className="skullBttn" onClick={handleClick}>
-              <img className="skullBttnImg" src={skullBttnImg} alt="small skull" />
-            </button>
+              <video
+                className="pirateVid"
+                ref={videoRef}
+                src={pirateVideo}
+                controls
+                muted={true}
+              />
             )}
           </div>
         </div>
-        </>
-    );
+        <div className="nextBttn">
+          {videoPlay && (
+            <button type="button" className="skullBttn" onClick={handleClick}>
+              <img
+                className="skullBttnImg"
+                src={skullBttnImg}
+                alt="small skull"
+              />
+            </button>
+          )}
+        </div>
+      </div>
+    </>
+  );
 }
 export default Video;

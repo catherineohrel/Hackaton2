@@ -36,6 +36,7 @@ function Dialogs() {
   const [toggle, setToggle] = useState(false);
   const [displayJack, setDisplayJack] = useState(true);
   const [displayGuest, setDisplayGuest] = useState(false);
+  const [afficheFin, setAfficheFin] = useState(false);
 
   const nav = useNavigate();
 
@@ -43,16 +44,24 @@ function Dialogs() {
     setTabSpeechJack(speechJack);
     setTabSpeechGuest(speechGuest);
 
+    setAfficheFin(true);
+    const timerTransition = setTimeout(() => {
+      setAfficheFin(false);
+    }, 1000);
+
     const timer = setTimeout(() => {
       setStart(true);
     }, 200);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(timerTransition);
+    };
   }, []);
 
   const setMessagesJack = () => {
     setIndexMessageJack((index) => {
-      if (index + 1 >= tabSpeechJack.length - 1) {
+      if (index + 1 > tabSpeechJack.length - 1) {
         return 0;
       } else {
         return index + 1;
@@ -96,50 +105,53 @@ function Dialogs() {
   };
 
   return (
-    <div className="dialogsGlobal">
-      <img
-        className="bg-dialog"
-        src={pirate}
-        alt="pirate devant un ordinateur"
-      />
-      <div className="dialogs">
-        <div className="jackSparrowSay">
-          {displayJack && (
-            <DialogBubble text={tabSpeechJack[indexMessageJack]} />
-          )}
-          <div className="wrap-img-jack">
-            <img
-              src={`src/assets/images/JS_${indexMessageJack}.png`}
-              alt="Jack Sparrow say to us...:'("
-            />
-          </div>
-        </div>
-
-        <div className="center">
-          <div className="clickScreen">
-            {!start && (
-              <button
-                onClick={handleNav}
-                className="btn-ecran zoomin"
-                type="button"
-              >
-                click me bitch !
-              </button>
+    <>
+      <div className={` ${afficheFin ? "activeCircle" : "hideVid"}`}></div>
+      <div className="dialogsGlobal">
+        <img
+          className="bg-dialog"
+          src={pirate}
+          alt="pirate devant un ordinateur"
+        />
+        <div className="dialogs">
+          <div className="jackSparrowSay">
+            {displayJack && (
+              <DialogBubble text={tabSpeechJack[indexMessageJack]} />
             )}
+            <div className="wrap-img-jack">
+              <img
+                src={`src/assets/images/JS_${indexMessageJack}.png`}
+                alt="Jack Sparrow say to us...:'("
+              />
+            </div>
           </div>
-          <div className="headOfPirate"></div>
-        </div>
 
-        <div className="dialogScreen">
-          <div className="GuestSay">
-            {displayGuest && (
-              <DialogBubble text={tabSpeechGuest[indexMessageGuest]} />
-            )}
+          <div className="center">
+            <div className="clickScreen">
+              {!start && (
+                <button
+                  onClick={handleNav}
+                  className="btn-ecran zoomin"
+                  type="button"
+                >
+                  click me bitch !
+                </button>
+              )}
+            </div>
+            <div className="headOfPirate">bloob</div>
           </div>
-          <button onClick={handleMessage}>Next !!</button>
+
+          <div className="dialogScreen">
+            <div className="GuestSay">
+              {displayGuest && (
+                <DialogBubble text={tabSpeechGuest[indexMessageGuest]} />
+              )}
+            </div>
+            <button onClick={handleMessage}>Next !!</button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 export default Dialogs;

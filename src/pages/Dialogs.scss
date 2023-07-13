@@ -15,6 +15,36 @@
   }
 }
 
+
+.activeCircle{
+  // animation : zoomin ease-in 4s;
+  position: absolute;
+  width:100%;
+  height: 100%; 
+  z-index:10;
+
+  // background-color: black;
+  background-color: black;
+  animation : opacitFunc 1s ease-in; 
+}
+
+@keyframes opacitFunc {
+  from {
+    opacity: 1;
+  }
+
+  to{
+    opacity:0;
+  }
+}
+
+.hideVid{
+  display:none;
+}
+
+
+/* ------------------------------ */
+
 .test{
   position:absolute;
   height: 200px;
@@ -153,6 +183,7 @@
         border:1px solid #C4A57C;
         position:relative;
         overflow:hidden;
+        cursor:pointer;
       }
 
       button:hover {
