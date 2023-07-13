@@ -144,7 +144,6 @@ function Home() {
             </span>
           </div>
           <div className="date">
-<<<<<<< HEAD
             <div className="dest-text">
               <span className="destination">DATE ARRIVAL : </span>
               <span className="englobe">
@@ -160,11 +159,6 @@ function Home() {
                   17-01-1756
                 </p>
               </span>
-=======
-            <div className="date-text">
-              <span className="date-title">ARRIVAL DATE : </span>
-              <span className="dt">17-01-1756</span>
->>>>>>> dev
             </div>
 
             <div className="date-comp-container">
