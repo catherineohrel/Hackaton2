@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import skullImg from "../assets/images/img/skull1.png";
 import skullBttnImg from "../assets/images/img/skullButton.png";
 import pirateVideo from "../assets/videos/PiratesOfTheCaribbeanCrowScene Short.mp4";
